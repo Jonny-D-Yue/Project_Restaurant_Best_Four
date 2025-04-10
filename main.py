@@ -1,51 +1,44 @@
 import tkinter as tk
 from tkinter import ttk
 
-# Root window
 root = tk.Tk()
 root.title("KFC Data Management System")
 root.geometry("1280x720")
 
-# Tabs
+# ---------------------- MENU BAR ---------------------- #
 notebook = ttk.Notebook(root)
 search_tab = ttk.Frame(notebook)
 modify_tab = ttk.Frame(notebook)
 notebook.add(search_tab, text="search")
 notebook.add(modify_tab, text="modify")
-notebook.pack(pady=10, fill='x')
+notebook.pack(pady=10, fill='both', expand=True)
 
-# Frame inside the tab
+# ---------------------- SEARCH TAB ---------------------- #
 frame = tk.Frame(search_tab, relief=tk.SOLID, borderwidth=1)
 frame.pack(padx=20, pady=20, fill='both', expand=True)
 
 mode_var = tk.StringVar(value="Customer")
 
-# Labels per row
 customer_labels = ["name", "phone", "address"]
 supply_labels = ["item", "quantity", "supplier"]
 
-# Store widgets
 customer_fields = {}
 supply_fields = {}
 
-# Create 3x3 structure
-for i in range(3):  # rows
-    for j in range(3):  # columns
-        # Customer setup
+for i in range(3):
+    for j in range(3):
         c_key = f"{customer_labels[i]}_{j}"
         customer_fields[c_key] = {
             "label": tk.Label(frame, text=customer_labels[i]),
             "entry": tk.Entry(frame)
         }
-        # Supply setup
-        if not (i == 2 and j == 2):  # skip bottom-right
+        if not (i == 2 and j == 2):
             s_key = f"{supply_labels[i]}_{j}"
             supply_fields[s_key] = {
                 "label": tk.Label(frame, text=supply_labels[i]),
                 "entry": tk.Entry(frame)
             }
 
-# Show fields
 def show_fields():
     for widget in frame.grid_slaves():
         if 1 <= int(widget.grid_info()["row"]) <= 3:
@@ -70,19 +63,67 @@ def show_fields():
                 label.grid(row=i+1, column=j*2, padx=5, pady=5, sticky='e')
                 entry.grid(row=i+1, column=j*2+1, padx=5, pady=5)
 
-# Radio buttons
 tk.Radiobutton(frame, text="Customer", variable=mode_var, value="Customer", command=show_fields)\
     .grid(row=0, column=1, padx=10, pady=10, sticky='w')
 tk.Radiobutton(frame, text="Supply", variable=mode_var, value="Supply", command=show_fields)\
     .grid(row=0, column=2, padx=10, pady=10, sticky='w')
 
-# Search button
 tk.Button(frame, text="search").grid(row=4, column=0, columnspan=6, pady=10)
 
-# Result Box
 result_box = tk.Text(frame, height=15, width=160)
 result_box.grid(row=5, column=0, columnspan=6, padx=10, pady=20)
 
-# Initialize
+# ---------------------- MODIFY TAB ---------------------- #
+modify_frame = tk.Frame(modify_tab, relief=tk.SOLID, borderwidth=1)
+modify_frame.pack(padx=20, pady=20, fill='both', expand=True)
+
+tk.Label(modify_frame, text="inventory_id").grid(row=0, column=0, padx=5, pady=5, sticky='e')
+inventory_id_entry = tk.Entry(modify_frame)
+inventory_id_entry.grid(row=0, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="supplier_id").grid(row=1, column=0, padx=5, pady=5, sticky='e')
+supplier_id_entry = tk.Entry(modify_frame)
+supplier_id_entry.grid(row=1, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="name").grid(row=2, column=0, padx=5, pady=5, sticky='e')
+name_entry = tk.Entry(modify_frame)
+name_entry.grid(row=2, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="category").grid(row=3, column=0, padx=5, pady=5, sticky='e')
+category_entry = tk.Entry(modify_frame)
+category_entry.grid(row=3, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="quantity").grid(row=4, column=0, padx=5, pady=5, sticky='e')
+quantity_entry = tk.Entry(modify_frame)
+quantity_entry.grid(row=4, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="unit").grid(row=5, column=0, padx=5, pady=5, sticky='e')
+unit_entry = tk.Entry(modify_frame)
+unit_entry.grid(row=5, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="reorder_level").grid(row=6, column=0, padx=5, pady=5, sticky='e')
+reorder_level_entry = tk.Entry(modify_frame)
+reorder_level_entry.grid(row=6, column=1, padx=5, pady=5)
+
+tk.Label(modify_frame, text="unit_cost").grid(row=7, column=0, padx=5, pady=5, sticky='e')
+unit_cost_entry = tk.Entry(modify_frame)
+unit_cost_entry.grid(row=7, column=1, padx=5, pady=5)
+
+def save_inventory():
+    data = {
+        "inventory_id": inventory_id_entry.get(),
+        "supplier_id": supplier_id_entry.get(),
+        "name": name_entry.get(),
+        "category": category_entry.get(),
+        "quantity": quantity_entry.get(),
+        "unit": unit_entry.get(),
+        "reorder_level": reorder_level_entry.get(),
+        "unit_cost": unit_cost_entry.get()
+    }
+    print("Saving inventory:", data)
+
+tk.Button(modify_frame, text="Save", command=save_inventory)\
+    .grid(row=8, column=0, columnspan=2, pady=10)
+
 show_fields()
 root.mainloop()
