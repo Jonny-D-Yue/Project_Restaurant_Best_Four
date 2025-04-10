@@ -1,3 +1,6 @@
+**Open MySQL Workbench, start a new SQL tab, copy & paste the SQL commands below**
+
+
 CREATE DATABASE
 kfood_pos;
 USE kfood_pos;

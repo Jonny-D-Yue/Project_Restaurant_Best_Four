@@ -1,3 +1,6 @@
+**Once the tables are created, copy & paste the data below**
+
+
 INSERT INTO CUSTOMERS (first_name, last_name, phone_number) VALUES
 ('John', 'Kim', '(604)721-1234'),
 ('Sarah', 'Chen', '(778)332-2345'),
