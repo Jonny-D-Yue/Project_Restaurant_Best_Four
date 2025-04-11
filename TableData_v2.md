@@ -252,14 +252,15 @@ INSERT INTO PAYMENTS (order_id, employee_id, payment_date, payment_time, amount,
 (20250029, 109, '2025-03-29', '13:30:00', 29.98, 'Debit Card', 'Completed'),
 (20250030, 104, '2025-03-29', '20:15:00', 48.95, 'Credit Card', 'Completed');
 
-INSERT INTO SUPPLIERS (name, contact_person, phone_number, email, address, payment_terms) VALUES
-('Vancouver Poultry Supply', 'Mark Johnson', '(604)555-6541', 'info@vps.ca', '123 Industrial Way, Vancouver, BC V5X 2T4', 'Net 30'),
-('West Coast Produce', 'Linda Chen', '(604)555-7832', 'orders@westcoastproduce.ca', '456 Farmers Lane, Richmond, BC V6Y 3Z1', 'Net 15'),
-('Pacific Beverage Distributors', 'James Wilson', '(604)555-9023', 'sales@pacificbev.ca', '789 Distribution Avenue, Burnaby, BC V5J 4S2', 'Net 30'),
-('Korean Food Imports', 'Soo-Jin Park', '(604)555-4185', 'info@koreanfoodimports.ca', '321 Import Road, Vancouver, BC V5T 1H5', 'Net 45'),
-('Vancouver Restaurant Supply', 'Robert Taylor', '(604)555-5294', 'sales@vanrestaurantsupply.ca', '654 Commercial Drive, Vancouver, BC V5L 3W2', 'Net 30'),
-('BC Packaging Solutions', 'Emily Chang', '(604)555-8376', 'service@bcpackaging.ca', '987 Packaging Blvd, Richmond, BC V6X 2S9', 'Net 15'),
-('Korean Specialty Goods', 'Min-Ho Kim', '(604)555-2487', 'orders@koreanspecialty.ca', '135 Asian Market Street, Vancouver, BC V5K 4R3', 'Net 30');
+
+INSERT INTO SUPPLIERS (name, contact_person, phone_number, email, street_address, city, province, postal_code, payment_terms) VALUES
+('Vancouver Poultry Supply', 'Mark Johnson', '(604)555-6541', 'info@vps.ca', '123 Industrial Way', 'Vancouver', 'BC', 'V5X 2T4', 'Net 30'),
+('West Coast Produce', 'Linda Chen', '(604)555-7832', 'orders@westcoastproduce.ca', '456 Farmers Lane', 'Richmond', 'BC', 'V6Y 3Z1', 'Net 15'),
+('Pacific Beverage Distributors', 'James Wilson', '(604)555-9023', 'sales@pacificbev.ca', '789 Distribution Avenue', 'Burnaby', 'BC', 'V5J 4S2', 'Net 30'),
+('Korean Food Imports', 'Soo-Jin Park', '(604)555-4185', 'info@koreanfoodimports.ca', '321 Import Road', 'Vancouver', 'BC', 'V5T 1H5', 'Net 45'),
+('Vancouver Restaurant Supply', 'Robert Taylor', '(604)555-5294', 'sales@vanrestaurantsupply.ca', '654 Commercial Drive', 'Vancouver', 'BC', 'V5L 3W2', 'Net 30'),
+('BC Packaging Solutions', 'Emily Chang', '(604)555-8376', 'service@bcpackaging.ca', '987 Packaging Blvd', 'Richmond', 'BC', 'V6X 2S9', 'Net 15'),
+('Korean Specialty Goods', 'Min-Ho Kim', '(604)555-2487', 'orders@koreanspecialty.ca', '135 Asian Market Street', 'Vancouver', 'BC', 'V5K 4R3', 'Net 30');
 
 
 INSERT INTO INVENTORY (supplier_id, name, category, quantity, unit, reorder_level, unit_cost) VALUES
