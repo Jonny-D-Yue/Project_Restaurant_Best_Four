@@ -5,9 +5,9 @@ implementation. You are expected to design and implement a complete database sol
 real-world problem. This project should include both a well-designed database and a user-friendly
 interface.
 
+
 **2 Project Requirements**
 The project must meet the following key criteria:
-
 1. Complexity of the Idea and Applicability:
    • The project should involve a database that is complex enough to demonstrate your
    understanding of the course concepts, including normalization and data modeling.
@@ -52,9 +52,9 @@ The project must meet the following key criteria:
    – Entity-Relationship (ER) diagram.
    – SQL code for creating the database schema (tables, relationships).
 
+
 **3 Assessment Criteria**
 Your final project will be assessed based on the following criteria:
-
 1. Complexity and Applicability of the Idea: The problem should be realistic and appropriately
    challenging for a database project.
 2. Database Design: Quality of the database schema, including normalization and relationships.
@@ -66,6 +66,7 @@ Your final project will be assessed based on the following criteria:
 5. Documentation: Clear and comprehensive documentation of the project, including the database
    schema, ER diagram, SQL code.
 
+
 **4 Submission Requirements**
 The final project should include the following:
 • GitHub Repository: Your project must be uploaded to a GitHub repository. The repository
@@ -75,6 +76,7 @@ You should submit the link for the repository to Moodle.
 • One page of project explanation like what the project is about and its features.
 • One page ER or EER diagram for the project.
 
+
 **5 Team Formation**
 • Team Size: Teams of up to 4 students are allowed to work together on the project.
 • Roles and Responsibilities: It is recommended that each team member take on specific
@@ -82,6 +84,7 @@ roles (e.g., database design, UI development, testing, documentation) to divide 
 efficiently.
 • Collaboration: Ensure that all team members contribute equally to the project. Any team
 member who is not contributing to the project may affect the team’s final grade.
+
 
 **6 Presentation**
 • The project should be presented in around 15-20 minutes over Zoom in an online session after
