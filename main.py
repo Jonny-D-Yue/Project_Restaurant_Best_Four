@@ -147,7 +147,7 @@ if __name__ == "__main__":
     # cursor = conn.cursor()
 
     root = tk.Tk()
-    root.title("KFood Database Management System")
+    root.title("KFood POS System")
     root.state("zoomed")  # Fullscreen
     # root.geometry("1366x768")
 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
     notebook.add(search_tab, text="Search")
 
     search_frame = tk.Frame(search_tab)
-    search_frame.pack(padx=8, pady=8, fill='x')
+    search_frame.pack(padx=8, pady=8, fill='none')
 
     all_entry_vars = {}
     # for table in tables:
