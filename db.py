@@ -81,3 +81,29 @@ def get_columns_for_table(table_name, schema):
     cursor.close()
     conn.close()
     return result
+
+
+def get_foreign_key_database(database_name):
+    conn = connect_db()
+    cursor = conn.cursor()
+    query = """
+        SELECT
+            TABLE_NAME,
+            COLUMN_NAME,
+            CONSTRAINT_NAME,
+            REFERENCED_TABLE_NAME,
+            REFERENCED_COLUMN_NAME
+        FROM
+            INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+        WHERE
+            TABLE_SCHEMA = %s AND
+            REFERENCED_TABLE_NAME IS NOT NULL
+        """
+
+    schema_name = database_name
+    cursor.execute(query, (schema_name,))
+    # cursor.execute(query)
+    foreign_keys = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return foreign_keys

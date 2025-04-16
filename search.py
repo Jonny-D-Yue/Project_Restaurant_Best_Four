@@ -1,25 +1,50 @@
+from db import connect_db
 
 
-def search_record():
-    # # Get the table name and search criteria from the user
-    # table_name = table_name_var.get()
-    # search_criteria = search_entry.get()
-
-    # # Construct the SQL query
-    # query = f"SELECT * FROM {table_name} WHERE {search_column} LIKE %s"
-    # cursor.execute(query, (f"%{search_criteria}%",))
-
-    # # Fetch the results
-    # results = cursor.fetchall()
-
-    # # Clear the treeview before inserting new data
-    # for item in tree.get_children():
-    #     tree.delete(item)
-
-    # # Insert the results into the treeview
-    # for row in results:
-    #     tree.insert("", "end", values=row)
+def search_record(selected_table, search_entries, Search_tree, columns):
     print("search_record")
+    table = selected_table.get()
+    if not table:
+        return
+
+    conn = connect_db()
+    cursor = conn.cursor()
+    conditions = []
+    values = []
+
+    for col, entry in search_entries.items():
+        val = entry.get().strip()
+        if val:
+            conditions.append(f"{col} LIKE %s")
+            values.append(f"%{val}%")
+
+    query = f"SELECT * FROM {table}"
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    try:
+        cursor.execute(query, values)
+        rows = cursor.fetchall()
+
+        # Search_tree.delete(*Search_tree.get_children())
+        for item in Search_tree.get_children():
+            Search_tree.delete(item)
+        Search_tree["columns"] = columns
+        Search_tree["show"] = "headings"
+        for col in columns:
+            Search_tree.heading(col, text=col)
+            Search_tree.column(col, width=100, anchor='center')
+        for row in rows:
+            Search_tree.insert('', 'end', values=row)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    cursor.close()
+    conn.close()
+
+
+
 
 def clear_fields_search(all_entry_vars):
     # Clear the search entry and treeview

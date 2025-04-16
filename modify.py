@@ -27,15 +27,6 @@ def load_data(form_obj):
     print(f"load_data {form_obj.table_name}")
 
 
-def on_tree_select(form_obj):
-    selected = form_obj.tree.focus()
-    if selected:
-        values = form_obj.tree.item(selected, 'values')
-        for i, col in enumerate(form_obj.col_names):
-            if col != form_obj.primary_key:
-                form_obj.entry_vars[col].set(values[i])
-
-
 def add_record(form_obj):
     conn = connect_db()
     cursor = conn.cursor()
